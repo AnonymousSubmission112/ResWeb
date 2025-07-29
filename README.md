@@ -1,33 +1,33 @@
-This is the artifact for the paper "MRWeb: An Exploration of Generating Multi-Page Resource-Aware Web Code from UI Designs." This artifact supplies the MRWeb toolkit and supplementary materials for the paper. 
+This is the artifact for the paper "ResWeb: Resource-Rich Web Code Generation via Evolutionary Sampling." This artifact supplies the ResWeb toolkit and supplementary materials for the paper. 
 
 
 This repository contains:
 
-1. **Code implementation of MRWeb generation pipeline**, i.e., the Python script and instructions to run MRWeb to preprocess websites, and generate UI code from screenshots with resource lists. 
-2.  **MRWeb Dataset**. Our experiment data (both original and generated) is available in `/dataset_collection/all_data`. 
+1. **Code implementation of ResWeb generation pipeline**, i.e., the Python script and instructions to run ResWeb to preprocess websites, and generate UI code from screenshots with resource lists. 
+2.  **ResWeb Dataset**. Our experiment data (both original and generated) is available in `/dataset_collection/all_data`. 
 3. **Image Quality Assessment dataset**. The human annotated image pairs for image quality assessment is available at `/experiment/RQ1/annotation.csv`. 
-4. **A user-friendly tool based on MRWeb**.
+4. **A user-friendly tool based on ResWeb**.
 
 
-Quick links: [Demo video](#Demo-video) | [MRWeb Examples](#Examples) | [Code usage](#Code-usage) | [Tool usage](#MRWeb-tool) 
+Quick links: [Demo video](#Demo-video) | [ResWeb Examples](#Examples) | [Code usage](#Code-usage) | [Tool usage](#ResWeb-tool) 
 
 
 # Abstract
 
-Multi-page websites dominate modern web development. However, existing design-to-code methods rely on simplified assumptions, limiting to single-page, self-contained webpages without external resource connection. To address this gap, we introduce the Multi-Page Resource-Aware Webpage (MRWeb) generation task, which transforms UI designs into multi-page, functional web UIs with internal/external navigation, image loading, and backend routing. We propose a novel resource list data structure to track resources, links, and design components. Our study applies existing methods to the MRWeb problem using a newly curated dataset of 500 websites (300 synthetic, 200 real-world). Specifically, we identify the best metric to evaluate the similarity of the web UI, assess the impact of the resource list on MRWeb generation, analyze MLLM limitations, and evaluate the effectiveness of the MRWeb tool in real-world workflows. The results show that resource lists boost navigation functionality from 0% to 66%-80% while facilitating visual similarity. Our proposed metrics and evaluation framework provide new insights into MLLM performance on MRWeb tasks. We release the MRWeb tool, dataset, and evaluation framework to promote further research
+Webpages often contain numerous internal and external resources, such as links, images, and downloadable content, which are essential for their functionality. Current approaches to "design-to-code" typically focus on self-contained webpages that do not include real links or images, overlooking the complexities of dynamic, resource-driven websites. This paper introduces the first comprehensive framework for generating, evaluating, and improving resource-rich webpages (ResWeb) from UI designs. Our contributions include: (1) the design of a data structure, the resource list, to track the correspondence between visual design elements and their associated resources (links, images, etc.) and a novel image-text interleaved HCI method for user input collection; (2) the creation of the first ResWeb dataset, comprising 10.2K websites with resource lists, screenshots, and ground truth code; (3) the introduction of new evaluation metrics tailored to ResWeb generation, measuring the correctness of generated resources and their alignment with visual design; and (4) a novel evolutionary-inspired sampling approach to enhance the quality of generated ResWeb by 2% - 25% on various metrics. Additionally, we present an easy-to-use framework and a release of code and data to encourage future research in this area. This work lays the foundation for advancing web development tools that can support resource-rich, real-world web applications.
 
 
 
 # Demo video
 
-This video demonstrates how the MRWeb tool enables code-free development from UI designs to resource-aware, navigable websites. 
+This video demonstrates how the ResWeb tool enables code-free development from UI designs to resource-aware, navigable websites. 
 
 https://github.com/user-attachments/assets/8b759d7d-21d5-49a3-96c6-b07d30384e98
 
 
 # Examples
 
-Comparison of self-contained website and multi-page resource-aware web (MRWeb). MRWeb supports multi-page navigation, real-image loading and backend routing.
+Comparison of self-contained website and multi-page resource-aware web (ResWeb). ResWeb supports multi-page navigation, real-image loading and backend routing.
 
 ![image-20241219171847068](assets/comparison1.png)
 
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 python dataset_collection/collect_data.py
 ```
 
-## 2. MRWeb Experiment
+## 2. ResWeb Experiment
 
 ```shell
 # store your respective API keys in keys/gptkey.txt, keys/geminikey.txt, keys/claudekey.txt
@@ -68,7 +68,7 @@ python experiment/RQ2/metrics.py
 
 
 
-# MRWeb tool
+# ResWeb tool
 
 1. Start the server
 
